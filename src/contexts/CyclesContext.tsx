@@ -15,13 +15,14 @@ interface Cycle {
 }
 
 interface CyclesContextType {
-  activeCycle: Cycle | undefined;
-  activeCycleId: string | null;
-  amountSecondsPassed: number;
-  markCurrentCycleAsFinished: () => void;
-  setSecondPassed: (seconds: number) => void;
-  CreateNewCycle: (data: CreateCycleData) => void;
-  InterruptCurrentCycle: () => void;
+    cycles: Cycle[];
+    activeCycle: Cycle | undefined;
+    activeCycleId: string | null;
+    amountSecondsPassed: number;
+    markCurrentCycleAsFinished: () => void;
+    setSecondPassed: (seconds: number) => void;
+    CreateNewCycle: (data: CreateCycleData) => void;
+    InterruptCurrentCycle: () => void;
 }
 
 interface CyclesContextProviderProps {
@@ -83,6 +84,7 @@ export function CyclesContextProvider({ children }: CyclesContextProviderProps) 
     return(
         <CyclesContext.Provider 
             value={{ 
+                cycles,
                 activeCycle, 
                 activeCycleId, 
                 markCurrentCycleAsFinished, 
